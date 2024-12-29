@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* Base styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: url('Farm to Home (1).png') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            padding: 40px;
+            width: 90%;
+            max-width: 300px;
+            border-radius: 5px;
+            backdrop-filter: blur(10px);
+            background-color: rgb(240, 231, 231);
+            position: relative;
+            top: 70px; /* Position the container slightly lower */
+        }
+
+        .login-header {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: #000000;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: #000000;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            color: #000000;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #000000;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #000000;
+        }
+
+        .input-group input:focus {
+            border-color: #4CAF50;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: #000000;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            background-color: #00e50c;
+        }
+
+        .error-message {
+            color: #ff4d4d;
+            font-size: 12px;
+            margin-top: -15px;
+            margin-bottom: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">Sign Up</div>
+        <form id="loginForm" onsubmit="return validateForm()">
+            <div class="input-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="input-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Create Password</label>
+                <input type="password" id="password" placeholder="Create a password" required>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                <span class="error-message" id="passwordError">Passwords do not match</span>
+            </div>
+            <button type="submit" class="btn-login">Login</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+            const passwordError = document.getElementById("passwordError");
+
+            if (password !== confirmPassword) {
+                passwordError.style.display = "block";
+                return false;
+            } else {
+                passwordError.style.display = "none";
+                window.location.href = "index.html"; // Redirect to the home page
+                return false; // Prevent actual form submission for demo
+            }
+        }
+    </script>
+</body>
+</html>
